@@ -1,5 +1,7 @@
 #include <iostream>
 using namespace std;
+// #include <conio.h>
+#include <stdlib.h>
 
 class Snake
 {
@@ -21,16 +23,33 @@ public:
         this->width = w;
     }
     
-    int** board_matrix() {
-        int matrix[height-1][width-1];
-        return arr[][];
+    char** board_matrix(int height, int width) {
+        char** arr = new char*[height-1];
+        for (int i = 0; i < height; i++)
+        {
+            arr[i] = new char[width];
+            for (int j = 0; j < width; j++)
+            {
+                arr[i][j] = 'a';
+            }
+        }
+        return arr;
     }
 
     void render()
     {
         cout << "Height: " << this->height << endl;
         cout << "Width: " << this->width << endl;
-        int matrix[][] = this->board_matrix();
+        char** matrix = board_matrix(height, width);
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
+                cout << matrix[i][j];
+            }
+            cout << endl;
+        }
+        
     }
 };
 
