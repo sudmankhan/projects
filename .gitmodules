@@ -1,0 +1,6 @@
+[submodule "labs"]
+	path = labs
+	url = git@github.com:sudmankhan/MKS22X-Labs.git
+[submodule "oldlabs"]
+	path = oldlabs
+	url = git@github.com:sudmankhan/MKS22X-Labs.git
