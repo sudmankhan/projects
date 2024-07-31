@@ -22,9 +22,9 @@ function getHumanChoice() {
     return choice;
 }
 
-function playRound() {
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
+function playRound(humanChoice, computerChoice) {
+    // let humanChoice = getHumanChoice();
+    // let computerChoice = getComputerChoice();
     if (humanChoice == "rock" && computerChoice == "rock") return "Tie!";
     else if (humanChoice == "rock" && computerChoice == "paper") {
         computerScore++;
@@ -54,22 +54,42 @@ function playRound() {
     else if (humanChoice == "scissors" && computerChoice == "scissors") return "Tie";
 }
 
-function playGame() {
-    for(let i = 0; i < 5; i++) {
-        console.log(playRound());
-    }
-    if(humanScore > computerScore) {
-        console.log("Human wins!")
-    } else if (computerScore > humanScore) {
-        console.log("Computer wins!")
-    } else {
-        console.log("Tie!")
-    }
-}
+// function playGame() {
+//     for(let i = 0; i < 5; i++) {
+//         console.log(playRound());
+//     }
+//     if(humanScore > computerScore) {
+//         console.log("Human wins!")
+//     } else if (computerScore > humanScore) {
+//         console.log("Computer wins!")
+//     } else {
+//         console.log("Tie!")
+//     }
+// }
 
 // console.log(getComputerChoice());
 // console.log(getHumanChoice());
 // console.log(playRound(getHumanChoice(), getComputerChoice()));
 // console.log("Computer Score: " + computerScore);
 // console.log("Human Score: " + humanScore);
-playGame();
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {button.addEventListener("click", () => {
+    // alert(button.id);
+    if(button.id == "r") playRound("rock", getComputerChoice());
+    if(button.id == "p") playRound("paper", getComputerChoice());
+    if(button.id == "s") playRound("scissors", getComputerChoice());
+    console.log("Computer Score: " + computerScore);
+    console.log("Human Score: " + humanScore);
+});
+});
+
+// const r = document.querySelector("#r");
+// const p = document.querySelector("#p");
+// const s = document.querySelector("#s");
+// r.addEventListener("click", alert("Hello World!"));
+// p.addEventListener("click", playRound("paper", getComputerChoice()));
+// s.addEventListener("click", playRound("scissors", getComputerChoice()));
+console.log("Computer Score: " + computerScore);
+console.log("Human Score: " + humanScore);
+// playGame();
