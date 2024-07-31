@@ -73,16 +73,51 @@ function playRound(humanChoice, computerChoice) {
 // console.log("Computer Score: " + computerScore);
 // console.log("Human Score: " + humanScore);
 
+const container = document.querySelector("#container");
+const div = document.createElement("div");
+const humanScoreLabel = document.createElement("h2");
+const computerScoreLabel = document.createElement("h2");
+const winner = document.createElement("h1");
+const humanChoiceLabel = document.createElement("p");
+const computerChoiceLabel = document.createElement("p");
+
+humanScoreLabel.textContent = "Human Score: " + humanScore;
+computerScoreLabel.textContent = "Computer Score: " + computerScore;
+
+// div.style.color = "red";
+div.style.fontFamily = "DejaVu Sans Mono, monospace";
+
+div.appendChild(humanScoreLabel);
+div.appendChild(computerScoreLabel);
+div.appendChild(humanChoiceLabel);
+div.appendChild(computerChoiceLabel);
+div.appendChild(winner);
+container.appendChild(div);
+
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {button.addEventListener("click", () => {
-    // alert(button.id);
-    if(button.id == "r") playRound("rock", getComputerChoice());
-    if(button.id == "p") playRound("paper", getComputerChoice());
-    if(button.id == "s") playRound("scissors", getComputerChoice());
-    console.log("Computer Score: " + computerScore);
-    console.log("Human Score: " + humanScore);
+    if (humanScore != 5 && computerScore != 5) {
+        humanChoice = button.id;
+        computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice);
+        humanChoiceLabel.textContent = "Human Choice: " + humanChoice[0].toUpperCase() + humanChoice.slice(1);
+        computerChoiceLabel.textContent = "Computer Score: " + computerChoice[0].toUpperCase() + computerChoice.slice(1);;
+
+        humanScoreLabel.textContent = "Human Score: " + humanScore;
+        computerScoreLabel.textContent = "Computer Score: " + computerScore;
+        if(humanScore == 5) {
+            winner.textContent = "Human Wins!";
+        } else if (computerScore == 5) {
+            winner.textContent = "Computer Wins!";
+        }
+    } 
 });
 });
+
+// div.appendChild(humanScoreLabel);
+// div.appendChild(computerScoreLabel);
+// div.appendChild(winner);
+// container.appendChild(div);
 
 // const r = document.querySelector("#r");
 // const p = document.querySelector("#p");
@@ -90,6 +125,9 @@ buttons.forEach((button) => {button.addEventListener("click", () => {
 // r.addEventListener("click", alert("Hello World!"));
 // p.addEventListener("click", playRound("paper", getComputerChoice()));
 // s.addEventListener("click", playRound("scissors", getComputerChoice()));
-console.log("Computer Score: " + computerScore);
-console.log("Human Score: " + humanScore);
-// playGame();
+// console.log("Computer Score: " + computerScore);
+// console.log("Human Score: " + humanScore);
+// while(humanScore || computerScore != 5) {
+    
+// }
+// // playGame();
