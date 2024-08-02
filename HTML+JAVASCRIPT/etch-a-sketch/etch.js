@@ -8,6 +8,8 @@ slider.style.width = "400px";
 const value = document.getElementById("value");
 value.textContent = slider.value;
 
+
+
 function createGrid(size) {
     for (let i = 0; i < size; i++) {
         const row = document.createElement("div");
@@ -26,15 +28,17 @@ function createGrid(size) {
 
 createGrid(slider.value);
 
+// (Math.random() * 255)
+
 const items = document.querySelectorAll("#item");
 items.forEach((item) => {item.addEventListener("mouseover", () => {
+    // item.style.backgroundColor = "rgb("+(Math.random() * 255)+","+(Math.random() * 255)+","+(Math.random() * 255)+")";
     item.style.backgroundColor = "black";
     if(item.style.opacity < 1.0) item.style.opacity = +item.style.opacity + 0.1;
 });
 });
 
 slider.oninput = () => {
-    console.log(slider.value);
     value.textContent = slider.value;
     const rows = document.querySelectorAll("#row");
     rows.forEach((row) => {
