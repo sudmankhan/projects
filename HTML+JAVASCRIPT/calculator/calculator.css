@@ -1,188 +1,76 @@
-// NOTE: You don't need to mess around with 
-// CSS to follow the tutorial. Focus on the 
-// JavaScript instead!
-// =========================
-
-// Some personal resets
 html {
-  box-sizing: border-box;
+  text-align: center;
+  font-family: "Andale Mono", monospace;
+  font-size: 45px;
+  font-weight: 500;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-body {
-  margin: 0;
-}
-
-/* Responsive Images */
-
-embed,
-iframe,
-img,
-object,
-video {
-  max-width: 100%;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ul,
-ol,
-li,
-p,
-pre,
-blockquote,
-figure,
-hr {
-  margin: 0;
-  padding-right: 0;
-  padding-left: 0;
-}
-
-a {
-  text-decoration: none;
-}
-
-a:focus {
-  outline: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  display: block;
-}
-
-/* Removes all decimals and discs from lists */
-
-ol,
-ul {
-  list-style: none;
-}
-
-/* 
- * Completely resets form items
- * ----------------------------
- * Super hard reset that removes all borders
- * and radiuses of all form items (including
- * checkboxes and radios)
- */
-
-input,
-textarea,
-button {
-  border: 0;
-  border-radius: 0;
-  background-color: transparent;
-  font-size: inherit;
-  font-family: inherit;
-  font-weight: inherit;
-  outline: none;
-  appearance: none;
-  text-align: left;
-}
-
-input:hover,
-input:active,
-input:focus,
-textarea:hover,
-textarea:active,
-textarea:focus,
-button:hover,
-button:active,
-button:focus {
-  outline: none;
-}
-
-:root {
-  font-family: Helvetica, Arial, sans-serif;
-}
-
-html {
-  font-size: 175%;
-  font-weight: 300;
-  line-height: 1.3;
-}
-
-body {
-  align-items: center;
-  background-image: linear-gradient(236deg, #74ebd5, #acb6e5);
+#container {
   display: flex;
-  height: 100vh;
   justify-content: center;
-}
-
-.container {
-  max-width: 20em;
-}
-
-.container > p {
-  text-align: center;
-}
-
-.calculator {
-  border-radius: 12px;
-  box-shadow: 0 0 40px 0px rgba(0, 0, 0, 0.15);
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 2em;
-  max-width: 15em;
+  align-items: center;
+  /* min-height: 95vh; */
+  height: 100vh;
   overflow: hidden;
+  /* width: 200vh; */
+  /* background-color: rgb(51, 0, 255); */
 }
 
-.calculator__display {
-  background-color: #222222;
-  color: #fff;
-  font-size: 1.714285714em;
-  padding: 0.5em 0.75em;
-  text-align: right;
-}
 
-.calculator__keys {
-  background-color: #999;
+#calc {
+  background-color: rgb(143, 143, 143);
+  /* height: 500px; */
+  width: 400px;
   display: grid;
-  grid-gap: 1px;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  border: 15px solid rgb(73, 73, 73);
+  overflow: hidden;
+  /* align-content: stretch; */
+  /* align-items: center; */
+  /* justify-items: center; */
+  /* flex: 1; */
+  /* margin-top: 100px;
+  margin-bottom: 100px; */
 }
 
-.calculator__keys > * {
-  background-color: #fff;
-  padding: 0.5em 1.25em;
-  position: relative;
-  text-align: center;
+#calc div {
+  /* height: 83px;
+  width: 100px; */
+  border: solid;
+  border-color: black;
+  line-height: 80px;
+  
 }
 
-.calculator__keys > *:active::before,
-.calculator__keys > .is-depressed::before {
-  background-color: rgba(0, 0, 0, 0.2);
-  bottom: 0;
-  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5) inset;
-  content: "";
-  left: 0;
-  opacity: 0.3;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 1;
+.view {
+  grid-column: 1 / -1;
+  text-align: end;
+  /* font-size: large; */
+  padding-right: 15px;
 }
 
-.key--operator {
-  background-color: #eee;
+/* #zero {
+  grid-column: 1 / 2;
 }
 
-.key--equal {
-  background-image: linear-gradient(to bottom, #fe886a, #ff7033);
-  grid-column: -2;
-  grid-row: 2 / span 4;
+#period {
+  grid-column: 3 / 3;
+} */
+
+#equals {
+  grid-column: 3 / -1;
+}
+
+.num {
+  background-color: rgb(117, 117, 117);
+  /* background-color: rgb(201, 201, 201); */
+}
+
+.func {
+  background-color: rgb(0, 110, 126);
+}
+
+.operation {
+  background-color: rgb(255, 174, 0);
 }
