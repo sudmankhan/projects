@@ -18,14 +18,16 @@ html {
 
 
 #calc {
-  background-color: rgb(143, 143, 143);
+  background-color: rgb(73, 73, 73);
   /* height: 500px; */
   width: 400px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  border: 15px solid rgb(73, 73, 73);
+  border: 20px solid rgb(73, 73, 73);
+  border-radius: 10px;
   overflow: hidden;
+  /* gap: 5px; */
   /* align-content: stretch; */
   /* align-items: center; */
   /* justify-items: center; */
@@ -40,26 +42,31 @@ html {
   border: solid;
   border-color: black;
   line-height: 80px;
-  
+  /* border-radius: 10px; */
 }
 
 .view {
   grid-column: 1 / -1;
-  text-align: end;
+  text-align: right;
   /* font-size: large; */
   padding-right: 15px;
+  padding-left: 15px;
+  background-color: rgb(172, 172, 172);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-/* #zero {
-  grid-column: 1 / 2;
+#zero {
+  border-bottom-left-radius: 10px;
 }
 
-#period {
+/* #period {
   grid-column: 3 / 3;
 } */
 
 #equals {
   grid-column: 3 / -1;
+  border-bottom-right-radius: 10px;
 }
 
 .num {
@@ -69,6 +76,7 @@ html {
 
 .func {
   background-color: rgb(0, 110, 126);
+  /* background-color: rgb(0, 156, 180); */
 }
 
 .operation {
