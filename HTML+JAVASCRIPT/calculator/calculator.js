@@ -14,7 +14,7 @@ const divide = function(a, b) {
   return a/b;
 };
 
-const evaluationStack = [];
+let evaluationStack = [];
 
 const display = document.querySelector(".view");
 
@@ -22,7 +22,7 @@ function evaluate(evaluationStack) {
   const operation = evaluationStack[1];
   const firstNum = +evaluationStack[0];
   const secondNum = +evaluationStack[2];
-  evaluationStack = [];
+  evaluationStack.splice(0,evaluationStack.length)
   console.log(evaluationStack)
   display.textContent = "0";
   switch(operation) {
@@ -32,8 +32,10 @@ function evaluate(evaluationStack) {
       return subtract(firstNum, secondNum);
     case "*":
       return multiply(firstNum, secondNum);
+      // Math.round((multiply(firstNum, secondNum) + Number.EPSILON) * 100) / 100;
     case "/":
       return divide(firstNum, secondNum);
+      //Math.round((divide(firstNum, secondNum) + Number.EPSILON) * 1000) / 1000;
   }
 }
 
@@ -69,7 +71,11 @@ const funcs = document.querySelectorAll(".func");
 funcs.forEach((item) => {
   item.addEventListener("click", () => {
     // clear
-    if (item.id === "clear") display.textContent = "0";
+    if (item.id === "clear") {
+      display.textContent = "0";
+      evaluationStack.splice(0,evaluationStack.length)
+    }
+    
 
     // negate
     else if (item.id === "neg") {
@@ -77,6 +83,10 @@ funcs.forEach((item) => {
         if (display.textContent[0] !== "-") display.textContent = "-" + display.textContent;
         else if (display.textContent[0] === "-") display.textContent = display.textContent.slice(1);
       }
+      if (evaluationStack.length == 1) evaluationStack[0] = display.textContent;
+      // console.log(evaluationStack);
+      if (evaluationStack.length == 3) evaluationStack[2] = display.textContent;
+      console.log(evaluationStack);
     }
 
     // percent
@@ -95,6 +105,7 @@ ops.forEach((item) => {
   item.addEventListener("click", () => {
     // if (item.style.backgroundColor !== "rgb(255, 225, 162)") {
     //   item.style.backgroundColor = "rgb(255, 225, 162)";
+
     // }
     // else if (item.style.backgroundColor !== "rgb(255, 174, 0)") {
     //   item.style.backgroundColor = "rgb(255, 174, 0)";
@@ -102,11 +113,17 @@ ops.forEach((item) => {
 
     // console.log(item.textContent);
     if (evaluationStack.length == 1) evaluationStack.push(item.textContent);
-    if (item.id === "equals" && evaluationStack.length == 3) display.textContent = evaluate(evaluationStack); 
+    console.log(evaluationStack);
+    if (evaluationStack.length == 3) {
+      evaluationStack.push(evaluate(evaluationStack));
+      display.textContent = evaluationStack[0]; 
+      console.log(evaluationStack);
+      if (item.id !== "equals") evaluationStack.push(item.textContent);
+    }
     // console.log(evaluationStack);
   }
 );
-// item.addEventListener("mouseover", () => {item.style.backgroundColor = "rgb(255, 225, 162)";});
-// item.addEventListener("mouseout", () => {item.style.backgroundColor = "rgb(255, 174, 0)";});
+item.addEventListener("mouseover", () => {item.style.backgroundColor = "rgb(255, 225, 162)";});
+item.addEventListener("mouseout", () => {item.style.backgroundColor = "rgb(255, 174, 0)";});
 });
 
