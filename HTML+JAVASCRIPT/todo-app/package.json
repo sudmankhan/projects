@@ -1,0 +1,24 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jsdom": "26.0.0",
+    "jsdom-global": "3.0.2",
+    "tape": "^5.9.0"
+  },
+  "dependencies": {
+    "jsdoc": "^4.0.4"
+  }
+}
